@@ -15,9 +15,9 @@ export default new client.command({
     async run(client, interaction) {
         const userTarget = interaction.options.getUser('user');
         await interaction.deferReply();
-        
+
         if (!userTarget) return;
-        
+
         const userMarryFirstFirst = await Marry.findOne({ where: { user_id_first: interaction.user.id } });
         const userMarrySecondFirst = await Marry.findOne({ where: { user_id_first: userTarget.id } });
         const userMarryFirstSecond = await Marry.findOne({ where: { user_id_second: interaction.user.id } });
@@ -52,7 +52,7 @@ export default new client.command({
                 .setLabel('Да!')
                 .setStyle(ButtonStyle.Success)
                 .setEmoji('💍')
-            
+
             const buttonRefuse = new ButtonBuilder()
                 .setCustomId('buttonRefuseForMarryAccept')
                 .setLabel('Нет.')
@@ -66,21 +66,21 @@ export default new client.command({
                 .setDescription(`${userTarget} вам сделали предложение руки и сердца от ${interaction.user}`)
                 .setColor('White')
                 .setImage('https://media1.tenor.com/m/4fgTN93I2CMAAAAC/marry-me.gif')
-                
+
             const message = await interaction.editReply({
                 content: `${userTarget}`,
                 embeds: [marryEmbed],
                 components: [row]
             });
 
-            const collector = message.createMessageComponentCollector({componentType: ComponentType.Button, time: 300000});
+            const collector = message.createMessageComponentCollector({ componentType: ComponentType.Button, time: 300000 });
 
             collector.on("collect", async subInteraction => {
                 if (subInteraction.isStringSelectMenu()) return;
 
                 if (subInteraction.isButton()) {
                     await subInteraction.deferUpdate();
-                    
+
                     const customId = subInteraction.customId;
                     if (subInteraction.user.id !== userTarget.id) {
                         await subInteraction.followUp({
@@ -97,7 +97,7 @@ export default new client.command({
                             content: '',
                             embeds: [
                                 new EmbedBuilder()
-                                    .setAuthor({ name: `Поздравляем!`, iconURL: `https://media.discordapp.net/attachments/1190500593626779678/1190526201018732645/icons8--96.png?ex=65a21eed&is=658fa9ed&hm=b6b120023c0cc75e4ee98db1b06a20b735218c4e624febe41368ffa601870195&=&format=webp&quality=lossless`})
+                                    .setAuthor({ name: `Поздравляем!`, iconURL: `https://media.discordapp.net/attachments/1190500593626779678/1190526201018732645/icons8--96.png?ex=65a21eed&is=658fa9ed&hm=b6b120023c0cc75e4ee98db1b06a20b735218c4e624febe41368ffa601870195&=&format=webp&quality=lossless` })
                                     .setDescription(`${interaction.user} поженился(ась) с ${userTarget}\nСовет вам да любовь.`)
                                     .setColor(`#${colors.stable}`)
                                     .setTimestamp()

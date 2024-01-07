@@ -6,6 +6,7 @@ import formatTime from "../../utils/formatTime";
 import { Raiting } from "../../database/models/Raiting";
 import { Users } from "../../database/models/Users";
 import calculateLvl from "../../functions/calculateLvl";
+import { emoji } from "../../utils/servIds.json";
 
 export default new client.command({
     structure: new SlashCommandBuilder()
@@ -26,10 +27,9 @@ export default new client.command({
 
         let userId = '';
 
-        
         if (!userDbMarry) {
             text = 'Участник не состоит в отношениях'
-        } 
+        }
 
         if (userDbMarry?.user_id_first === targetUser.id) {
             userId = userDbMarry.user_id_second;
@@ -37,12 +37,12 @@ export default new client.command({
             userId = userDbMarry.user_id_first;
         }
 
-            interaction.reply({
-                embeds: [
-                    new EmbedBuilder()
-                        .setAuthor({ name: `Профиль участника: ${targetUser.username}` })
-                        .setFields(
-                            {
+        interaction.reply({
+            embeds: [
+                new EmbedBuilder()
+                    .setAuthor({ name: `Профиль участника: ${targetUser.username}` })
+                    .setFields(
+                        {
                             name: `Отношения`,
                             value: `${text === '' ? `Участник состоит в отношениях с <@${userId}>\nОтношения продолжаются уже \`${formatTime(Date.now() - userDbMarry!.time)}\`` : text}`
                         },
@@ -56,16 +56,16 @@ export default new client.command({
                         },
                         {
                             name: `Баланс`,
-                            value: `\`${userDb?.balance ?? 0}\``
+                            value: `\`${userDb?.balance ?? 0}\`${emoji.serverCurrency}`
                         },
                         {
                             name: `Ранг и опыт`,
-                            value: `Ранг: \`${userDb?.rank ?? 0}\`\nОпыт: \`${userDb?.exp ?? 0} из ${calculateLvl(userDb?.rank ?? 0)}\``
+                            value: `Ранг: \`${userDb?.rank ?? 0}\`\nОпыт: \`${userDb?.exp ?? 0} exp из ${calculateLvl(userDb?.rank ?? 0)} exp\``
                         }
-                        )
-                        .setColor(`#${colors.stable}`)
-                        .setThumbnail(targetUser.avatarURL())
-                ]
-            })
+                    )
+                    .setColor(`#${colors.stable}`)
+                    .setThumbnail(targetUser.avatarURL())
+            ]
+        })
     },
 })

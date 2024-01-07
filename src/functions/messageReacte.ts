@@ -1,8 +1,8 @@
 import { Message } from "discord.js";
 
-export default function messageReact (message: Message) {
+export default function messageReact(message: Message) {
     if (message.content === 'бу') {
-        let text = ['ты че пес пугаешь', 'зашибу', 'бот умер от инсульта', 'бубубу', 'я не зеркало чтоб меня пугать', 'я тебя переебу', 'бука', 'X_X'] 
+        let text = ['ты че пес пугаешь', 'зашибу', 'бот умер от инсульта', 'бубубу', 'я не зеркало чтоб меня пугать', 'я тебя переебу', 'бука', 'X_X']
         const randomText = text[Math.floor(Math.random() * text.length)];
         message.reply(randomText)
     } else if (message.content.toLocaleLowerCase() === 'а че') {

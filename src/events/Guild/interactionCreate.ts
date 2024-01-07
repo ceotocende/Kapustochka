@@ -5,8 +5,7 @@ client.on('interactionCreate', async (interaction) => {
     if (!interaction.inGuild()) {
         interaction.reply(`Вы можете использовать команды только на сервере`)
         return;
-    } 
-
+    }
 
     const command = client.commands.get(interaction.commandName);
 

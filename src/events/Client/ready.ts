@@ -9,7 +9,7 @@ client.once('ready', () => {
     const testChannel = client.channels.cache.get('1191737230834806854') as TextChannel;
     testChannel.send('Привет, я работаю стабильно!')
     sequelize
-    client.user?.setActivity('капусту',{ type: ActivityType.Playing });
+    client.user?.setActivity('капусту', { type: ActivityType.Playing });
     client.user?.setStatus("idle")
 
     getTopChat(client);

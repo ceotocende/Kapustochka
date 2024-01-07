@@ -30,5 +30,5 @@ export default async function chekRank(id: string, guild: Guild) {
             user.exp = 0;
             user.save();
         }
-    } 
+    }
 }

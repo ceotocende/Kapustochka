@@ -22,7 +22,7 @@ client.on('interactionCreate', async (interaction) => {
         ephemeral: true
       })
     } else {
-      
+
       switch (splitedArray[1]) {
         case 'Yes': {
 
@@ -69,7 +69,7 @@ client.on('interactionCreate', async (interaction) => {
         case 'No': {
 
           if (votingAdd.has(`${interaction.user.id}-${interaction.message.id}-no`)) {
-            
+
             interaction.followUp({
               content: `Вы уже проголосовали за -против-`,
               ephemeral: true

@@ -47,10 +47,9 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     if (oldChannel !== null && newChannel === null) {
         await addVoiceTime(`${oldState.member!.id}`, currentTime - map.get(newState.member!.id))
 
-        
         await addBalance(newState.member!.id, 1, newState.guild, true);
         await addExp(newState.member!.id, newState.guild, currentTime - map.get(newState.member!.id), true);
-        
+
         map.delete(newState.member!.id);
         channelLog.send({
             embeds: [
@@ -62,6 +61,4 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             ]
         })
     }
-
-
 })

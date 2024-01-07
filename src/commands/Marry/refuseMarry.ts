@@ -10,7 +10,7 @@ export default new client.command({
         const refuseMarryFirst = await Marry.findOne({ where: { user_id_first: interaction.user.id } });
         const refuseMarrySecond = await Marry.findOne({ where: { user_id_second: interaction.user.id } });
 
-        if(!refuseMarryFirst && !refuseMarrySecond) {
+        if (!refuseMarryFirst && !refuseMarrySecond) {
             await interaction.reply({
                 embeds: [
                     new EmbedBuilder()
