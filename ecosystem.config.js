@@ -2,7 +2,7 @@ module.exports = {
     apps: [
       {
         name: "Kapusta",
-        script: "tsc && node .",
+        script: "node .",
         watch: true
       }
     ]
