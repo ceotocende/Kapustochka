@@ -3,10 +3,11 @@ import { client } from "../..";
 import sequelize from "../../database/dbsync";
 import getTopChat from "../../cron/getTopChat";
 import getTopVoice from "../../cron/getTopVoice";
+import { channelId } from '../../utils/servIds.json';
 
 client.once('ready', () => {
     console.log('Logged in as: ' + client.user?.tag);
-    const testChannel = client.channels.cache.get('1191737230834806854') as TextChannel;
+    const testChannel = client.channels.cache.get(channelId.serverLogs) as TextChannel;
     testChannel.send('Привет, я работаю стабильно!')
     sequelize
     client.user?.setActivity('капусту', { type: ActivityType.Playing });
