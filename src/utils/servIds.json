@@ -1,0 +1,20 @@
+{
+    "channelId": {
+        "chat": "1191737230834806854",
+        "serverLogs": "1191737230834806854",
+        "botLog": "-",
+        "userLog": "1191737230834806854",
+        "messageLog": "-",
+        "voiceLog": "1191737230834806854",
+        "parrentVoiceCreateChannel": "-",
+        "voiceCreateChannel": "-",
+        "basketChannel": "-",
+        "readyChannel": "1191737230834806854"
+    },
+    "roleId": {
+        "activeRole": "1155576169186467952"
+    },
+    "userId": {
+        "vexify": "946120165358182480"
+    }
+}
