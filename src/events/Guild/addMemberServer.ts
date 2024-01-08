@@ -1,7 +1,6 @@
-import { Client, EmbedBuilder, TextChannel } from "discord.js";
+import { EmbedBuilder, TextChannel } from "discord.js";
 import { client } from "../..";
 import { Users } from "../../database/models/Users";
-import { sayHi } from '../../utils/gif.json';
 import { colors } from "../../utils/config";
 import { channelId } from "../../utils/servIds.json";
 
@@ -13,8 +12,6 @@ client.on('guildMemberAdd', async (member) => {
     const user = await Users.findOne({ where: { user_id: id } });
 
     user ? 0 : Users.create({ user_id: id, balance: 0, bank: 0, exp: 0, rank: 0, cookie: 0 });
-
-    const gif = sayHi[Math.floor(Math.random() * sayHi.length)];
 
     const embed = new EmbedBuilder({
         author: {
@@ -44,7 +41,7 @@ client.on('guildMemberAdd', async (member) => {
         <:131_:1156931257763115100>  https://discord.com/channels/743526389634039810/1144263261546614824 - набор модерации
         <:131_:1156931257763115100>  https://discord.com/channels/743526389634039810/1147261633060679731 - Получение серверной валюты` ,
         thumbnail: {url: `${member.guild.iconURL()}`},
-        image: {url: `${gif}`}
+        image: {url: `https://cdn.discordapp.com/attachments/1103172811666767925/1144360059678232738/08EF4796-C124-4E67-9D19-96F58A4B3B08.gif?ex=65a982db&is=65970ddb&hm=6787d902ebe8b23a5b4887c3eee4f8ff763924588a191660e5f1e73b5f9ec8a5&`}
     })
     .setColor(`#${colors.stable}`)
 
