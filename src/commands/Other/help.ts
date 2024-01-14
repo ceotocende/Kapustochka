@@ -40,7 +40,6 @@ export default new client.command({
 
         const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(selectMenu)
 
-
         const message = await interaction.editReply({
             embeds: [firstEmbed],
             components: [row],

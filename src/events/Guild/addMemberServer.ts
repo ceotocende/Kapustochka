@@ -2,7 +2,7 @@ import { EmbedBuilder, TextChannel } from "discord.js";
 import { client } from "../..";
 import { Users } from "../../database/models/Users";
 import { colors } from "../../utils/config";
-import { channelId } from "../../utils/servIds.json";
+import { channelId, roleId } from "../../utils/servIds.json";
 
 client.on('guildMemberAdd', async (member) => {
     if (member.user.bot) return;
@@ -48,7 +48,7 @@ client.on('guildMemberAdd', async (member) => {
     const channel = member.client.channels.cache.get(channelId.chat) as TextChannel;
     
     channel.send({
-        content: `||${member.user}||`,
+        content: `${member.user} <@&${roleId.helper}>`,
         embeds: [embed]
     })
 
@@ -62,7 +62,7 @@ client.on('guildMemberAdd', async (member) => {
                 В дискорде ${new Date(member.user.createdAt)}
                 `)
                 .setTimestamp()
-                .setFooter({ text: `${member.id}` })
+                .setFooter({ text: `${member.id}` })    
         ]
     })
 })

@@ -2,11 +2,11 @@ import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { client } from "../..";
 import { Marry } from "../../database/models/Marry";
 import { colors, embedErrFromUserDb } from "../../utils/config";
-import formatTime from "../../utils/formatTime";
 import { Raiting } from "../../database/models/Raiting";
 import { Users } from "../../database/models/Users";
 import calculateLvl from "../../functions/calculateLvl";
 import { emoji } from "../../utils/servIds.json";
+import formatTimeForProfile from "../../functions/formatTimeForProfile";
 
 export default new client.command({
     structure: new SlashCommandBuilder()
@@ -44,23 +44,23 @@ export default new client.command({
                     .setFields(
                         {
                             name: `Отношения`,
-                            value: `${text === '' ? `Участник состоит в отношениях с <@${userId}>\nОтношения продолжаются уже \`${formatTime(Date.now() - userDbMarry!.time)}\`` : text}`
+                            value: `${text === '' ? `Участник состоит в отношениях с <@${userId}>\nОтношения продолжаются уже \`${formatTimeForProfile(Date.now() - userDbMarry!.time)}\`` : text}`
                         },
                         {
                             name: `Общее время в голсовых каналх`,
-                            value: `\`${formatTime(userRating?.voice_time ?? 0)}\``
+                            value: `\`${formatTimeForProfile(userRating?.voice_time ?? 0)}\``
                         },
                         {
                             name: `Всего сообщений`,
-                            value: `\`${userRating?.message ?? 0}\``
+                            value: `**${(userRating?.message ?? 0).toLocaleString('ru-RU')}**`
                         },
                         {
                             name: `Баланс`,
-                            value: `\`${userDb?.balance ?? 0}\`${emoji.serverCurrency}`
+                            value: `**${(userDb?.balance ?? 0).toLocaleString('ru-RU')}**${emoji.serverCurrency}`
                         },
                         {
                             name: `Ранг и опыт`,
-                            value: `Ранг: \`${userDb?.rank ?? 0}\`\nОпыт: \`${userDb?.exp ?? 0} exp из ${calculateLvl(userDb?.rank ?? 0)} exp\``
+                            value: `Ранг: \n**${userDb?.rank ?? 0}**\nОпыт: \n**${(userDb?.exp ?? 0).toLocaleString('ru-RU')}** EXP из **${(calculateLvl(userDb?.rank ?? 0)).toLocaleString('ru-RU')}** EXP`
                         }
                     )
                     .setColor(`#${colors.stable}`)
