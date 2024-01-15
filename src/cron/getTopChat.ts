@@ -18,7 +18,7 @@ export default async function getTopChat(client: Client) {
             limit: 5
         });
 
-        const guild = client.guilds.cache.get('1190498168232755230');
+        const guild = client.guilds.cache.get('743526389634039810');
 
         const embed = new EmbedBuilder()
             .setAuthor({ name: `Подводим недельные итоги активности в чате` })
@@ -43,7 +43,7 @@ export default async function getTopChat(client: Client) {
             embeds: [embed]
         })
 
-        const role = guild!.roles.cache.get("1191683581106458744") as Role;
+        const role = guild!.roles.cache.get("1155576169186467952") as Role;
 
         const clearUsersMessages = await usersMessages.update({ message_timely: 0 }, { where: {} });
 
