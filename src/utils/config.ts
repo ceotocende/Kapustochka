@@ -17,9 +17,43 @@ export const embedErrFromUserDb = new EmbedBuilder()
     .setTimestamp()
 
 export const emoji = {
-    money: `<:money:1143261834749689906>`
+    money: `<:12:1196401905337901126>`
 }
 
 export const photoServer = {
-    serverAvatar: "https://media.discordapp.net/attachments/1189930336847659018/1189930640787902606/1640701208_27-papik-pro-p-luna-anime-risunok-28.jpg?ex=659ff444&is=658d7f44&hm=230e0931ebbec14f2419c3b255eba1657c100a490965204010e14071304b75b0&=&format=webp&width=1074&height=671",
+    serverAvatar: "https://images-ext-1.discordapp.net/external/y87jxbCRGhp5yxvoGMCorKm6gOrKIH5b-BgS1_hS47w/https/cdn.discordapp.com/icons/743526389634039810/a_c5b157a07d0c057f4dcf7ee73ebbd0af.gif"
 }
+
+export const rewards = {
+    timely: 100,
+    daily: 1000,
+    weekly: 5000,
+    monthly: 10000,
+    work: Math.floor(Math.random() * (10000 - 100 + 1)) + 100
+}
+
+export const rewardsTiming = {
+    timely: 12 * 60 * 60 * 1000,
+    daily: 24 * 60 * 60 * 1000,
+    weekly: 168 * 60 * 60 * 1000,
+    monthly: 30 * 24 * 60 * 60 * 1000,
+    work: 4 * 60 * 60 * 1000
+}
+
+export const workName = [
+    'учителя',
+    'заправщика',
+    'музканта',
+    'редактора',
+    'экономиста',
+    'водителя',
+    'эколога',
+    'инженера',
+    'мененджера',
+    'кассира',
+    'психолога',
+    'работник склада',
+    'курьера',
+    'администратора',
+    'журналиста'
+]

@@ -2,12 +2,13 @@ import { Guild, TextChannel, VoiceChannel } from "discord.js";
 import { Users } from "../models/Users";
 import { addBalance } from "./addBalance";
 import chekRank from "../../functions/chekRankDataBase";
+import addUserToDatabase from "./addUserToDatabase";
 
 export default async function addExp(id: string, guild: Guild, exp?: number, voice?: boolean) {
     const user = await Users.findOne({ where: { user_id: id } });
 
     if (!user) {
-        await addBalance(id, 1, guild);
+        await addUserToDatabase(id);
     } else if (user.user_id === id) {
         if (voice) {
             if (!exp) {

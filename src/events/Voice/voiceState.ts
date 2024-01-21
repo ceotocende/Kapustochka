@@ -1,15 +1,18 @@
 import { Colors, TextChannel } from "discord.js";
 import { client } from "../..";
-import { channelId } from '../../utils/servIds.json'
+import { channelId, guild_id } from '../../utils/servIds.json'
 import { EmbedBuilder } from "@discordjs/builders";
 import addVoiceTime from "../../database/functions/addVoiceTime";
 import { colors } from "../../utils/config";
 import { addBalance } from "../../database/functions/addBalance";
 import addExp from "../../database/functions/addExp";
+import addUserToDatabase from "../../database/functions/addUserToDatabase";
 
 const map = new Map();
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
+    if ((oldState.guild.id !== guild_id) || (newState.guild.id !== guild_id)) return;
+    
     const oldChannel = oldState.channel;
     const newChannel = newState.channel;
 
@@ -32,7 +35,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 
     if (newState.channel !== null && oldChannel === null) {
         map.set(newState.member!.id, currentTime);
-
+        await addUserToDatabase(newState.member!.id);
         channelLog.send({
             embeds: [
                 new EmbedBuilder()

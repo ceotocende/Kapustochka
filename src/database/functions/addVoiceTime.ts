@@ -1,6 +1,7 @@
 import { Raiting } from "../models/Raiting";
 import { Users } from "../models/Users";
 import { addBalance } from "./addBalance";
+import addUserToDatabase from "./addUserToDatabase";
 
 export default async function addVoiceTime(id: string, time: number) {
     const user = await Users.findOne({ where: { user_id: id } });
@@ -8,7 +9,7 @@ export default async function addVoiceTime(id: string, time: number) {
     const userVoice = await Raiting.findOne({ where: { user_id: id } });
 
     if (!user || !userVcoice) {
-        await addBalance(id, 1);
+        await addUserToDatabase(id);
     }
 
     if (isNaN(time)) {

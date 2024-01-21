@@ -58,5 +58,9 @@ export default function messageReact(message: Message) {
         let text = ['а мне нормааально', 'хочу кушать']
         const randomText = text[Math.floor(Math.random() * text.length)];
         message.reply(randomText)
+} else if (message.content.toLocaleLowerCase() === 'что делаешь') {
+        let text = ['сплю', 'нагоняю суеты', 'в карты играю', 'играю в кто круче овощ', 'играю в лигу', 'готовлю хачапурьки', 'глажу котика', 'тебя обнимаю<3', 'считаю здвёзды... О тебя нашел']
+        const randomText = text[Math.floor(Math.random() * text.length)];
+        message.reply(randomText)
     }
 }
